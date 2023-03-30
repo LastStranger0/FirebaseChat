@@ -9,22 +9,22 @@ import android.view.MenuItem
 import android.widget.ProgressBar
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.firebase.ui.auth.AuthUI
 import com.google.firebase.BuildConfig
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
-import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ktx.database
 import com.google.firebase.ktx.Firebase
-import com.google.firebase.storage.StorageReference
 import com.google.firebase.storage.ktx.storage
+import com.mtg.chat.databinding.ActivityMainBinding
 import com.mtg.chatDomain.adapter.MessageAdapter
 import com.mtg.chatDomain.adapter.observer.BottomScrollObserver
-import com.mtg.chat.databinding.ActivityMainBinding
 import com.mtg.chatDomain.file.FileContract
+import com.mtg.chatDomain.repository.SendRepository
 import com.mtg.chatDomain.repository.SendRepositoryImpl
 import com.mtg.chatDomain.repository.SendRepositoryImpl.Companion.MESSAGES_CHILD
+import com.mtg.chatDomain.signIn.UserLoginStatusRepository
+import com.mtg.chatDomain.signIn.UserLoginStatusRepositoryImpl
 import com.mtg.chatDomain.ui.observer.SendButtonObserver
 import com.mtg.chatDomain.useCase.PutImageUseCase
 import com.mtg.chatDomain.useCase.SendUseCase
@@ -33,9 +33,11 @@ class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
     private lateinit var manager: LinearLayoutManager
 
-    private val sendRepository = SendRepositoryImpl()
+    private val sendRepository: SendRepository = SendRepositoryImpl()
     private val sendUseCase = SendUseCase(sendRepository)
     private val putImageUseCase = PutImageUseCase(sendRepository)
+    private val userLoginStatusRepository: UserLoginStatusRepository =
+        UserLoginStatusRepositoryImpl()
 
     private lateinit var auth: FirebaseAuth
     private lateinit var db: FirebaseDatabase
@@ -48,16 +50,15 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
-            .also { setContentView(R.layout.activity_main) }
+        setContentView(binding.root)
 
         if (BuildConfig.DEBUG) {
             Firebase.database.useEmulator("10.0.2.2", 9001)
             Firebase.auth.useEmulator("10.0.2.2", 9011)
-            Firebase.storage.useEmulator("10.0.2.2", 919)
+            Firebase.storage.useEmulator("10.0.2.2", 9119)
         }
         auth = Firebase.auth
         if (auth.currentUser == null) {
-            // Not signed in, launch the Sign In activity
             startActivity(Intent(this, SignInActivity::class.java))
             finish()
             return
@@ -82,7 +83,7 @@ class MainActivity : AppCompatActivity() {
                 sendRepository.getUserName(auth),
                 sendRepository.getPhotoUrl(auth),
                 null,
-                Firebase.database.reference
+                db.reference
             )
             binding.messageEditText.setText("")
         }
@@ -133,7 +134,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun signOut() {
-        AuthUI.getInstance().signOut(this)
+        userLoginStatusRepository.signOut(this)
         startActivity(Intent(this, SignInActivity::class.java))
         finish()
     }

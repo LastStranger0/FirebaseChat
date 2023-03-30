@@ -6,38 +6,31 @@ import android.util.Log
 import android.widget.Toast
 import androidx.activity.result.ActivityResultLauncher
 import androidx.appcompat.app.AppCompatActivity
-import com.firebase.ui.auth.AuthUI
 import com.firebase.ui.auth.FirebaseAuthUIActivityResultContract
 import com.firebase.ui.auth.data.model.FirebaseAuthUIAuthenticationResult
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
 import com.mtg.chat.databinding.ActivitySignInBinding
+import com.mtg.chatDomain.builder.IntentBuilder
+import com.mtg.chatDomain.signIn.UserLoginStatusRepositoryImpl
 
 class SignInActivity : AppCompatActivity() {
     private lateinit var binding: ActivitySignInBinding
+    private val userLoginStatusRepository = UserLoginStatusRepositoryImpl()
 
     private val signIn: ActivityResultLauncher<Intent> =
         registerForActivityResult(FirebaseAuthUIActivityResultContract(), this::onSignInResult)
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = ActivitySignInBinding.inflate(layoutInflater).also { setContentView(binding.root) }
+        binding = ActivitySignInBinding.inflate(layoutInflater)
+        setContentView(binding.root)
     }
 
     public override fun onStart() {
         super.onStart()
         if (Firebase.auth.currentUser == null) {
-            val signInIntent = AuthUI.getInstance()
-                .createSignInIntentBuilder()
-                .setLogo(R.mipmap.ic_launcher)
-                .setAvailableProviders(
-                    listOf(
-                        AuthUI.IdpConfig.EmailBuilder().build(),
-                        AuthUI.IdpConfig.GoogleBuilder().build(),
-                    )
-                )
-                .build()
-
+            val signInIntent = IntentBuilder.buildSignInIntent()
             signIn.launch(signInIntent)
         } else {
             goToMainActivity()
@@ -45,7 +38,8 @@ class SignInActivity : AppCompatActivity() {
     }
 
     private fun onSignInResult(result: FirebaseAuthUIAuthenticationResult) {
-        if (result.resultCode == RESULT_OK) {
+        val resultChecked = userLoginStatusRepository.checkSignIn(this, result)
+        if (resultChecked.isSuccess()) {
             goToMainActivity()
         } else {
             Toast.makeText(
