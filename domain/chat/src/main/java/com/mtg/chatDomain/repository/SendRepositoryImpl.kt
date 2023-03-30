@@ -26,12 +26,12 @@ class SendRepositoryImpl: SendRepository {
             ) { taskSnapshot ->
                 taskSnapshot.metadata!!.reference!!.downloadUrl
                     .addOnSuccessListener { uri ->
-                        val friendlyMessage =
+                        val message =
                             Message(null, getUserName(auth), getPhotoUrl(auth), uri.toString())
                         dbReference
                             .child(MESSAGES_CHILD)
                             .child(key!!)
-                            .setValue(friendlyMessage)
+                            .setValue(message)
                     }
             }
             .addOnFailureListener(activity) { e ->
