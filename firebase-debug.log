@@ -1,0 +1,76 @@
+[debug] [2023-03-29T21:35:55.534Z] ----------------------------------------------------------------------
+[debug] [2023-03-29T21:35:55.537Z] Command:       C:\Users\anton\DOWNLO~1\firebase-tools-instant-win.exe C:\Users\anton\.cache\firebase\tools\lib\node_modules\firebase-tools\lib\bin\firebase emulators:start --project=chat
+[debug] [2023-03-29T21:35:55.538Z] CLI Version:   11.25.2
+[debug] [2023-03-29T21:35:55.538Z] Platform:      win32
+[debug] [2023-03-29T21:35:55.538Z] Node Version:  v16.16.0
+[debug] [2023-03-29T21:35:55.540Z] Time:          Thu Mar 30 2023 00:35:55 GMT+0300 (GMT+03:00)
+[debug] [2023-03-29T21:35:55.541Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2023-03-29T21:35:55.659Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2023-03-29T21:35:55.659Z] > authorizing via signed-in user (schur2982@gmail.com)
+[debug] [2023-03-29T21:35:55.883Z] java version "15" 2020-09-15
+
+[debug] [2023-03-29T21:35:55.884Z] Java(TM) SE Runtime Environment (build 15+36-1562)
+Java HotSpot(TM) 64-Bit Server VM (build 15+36-1562, mixed mode, sharing)
+
+[debug] [2023-03-29T21:35:55.929Z] Parsed Java major version: 15
+[info] i  emulators: Starting emulators: auth, database, storage {"metadata":{"emulator":{"name":"hub"},"message":"Starting emulators: auth, database, storage"}}
+[debug] [2023-03-29T21:35:55.956Z] [logging] Logging Emulator only supports listening on one address (127.0.0.1). Not listening on ::1
+[debug] [2023-03-29T21:35:55.956Z] [auth] Authentication Emulator only supports listening on one address (127.0.0.1). Not listening on ::1
+[debug] [2023-03-29T21:35:55.957Z] [database] Database Emulator only supports listening on one address (127.0.0.1). Not listening on ::1
+[debug] [2023-03-29T21:35:55.957Z] [storage] Storage Emulator only supports listening on one address (127.0.0.1). Not listening on ::1
+[debug] [2023-03-29T21:35:55.957Z] assigned listening specs for emulators {"user":{"hub":[{"address":"127.0.0.1","family":"IPv4","port":4400},{"address":"::1","family":"IPv6","port":4400}],"ui":[{"address":"127.0.0.1","family":"IPv4","port":4000},{"address":"::1","family":"IPv6","port":4000}],"logging":[{"address":"127.0.0.1","family":"IPv4","port":4500}],"auth":[{"address":"127.0.0.1","family":"IPv4","port":9011}],"database":[{"address":"127.0.0.1","family":"IPv4","port":9001}],"storage":[{"address":"127.0.0.1","family":"IPv4","port":9119}]},"metadata":{"message":"assigned listening specs for emulators"}}
+[debug] [2023-03-29T21:35:55.964Z] [hub] writing locator at C:\Users\anton\AppData\Local\Temp\hub-chat.json
+[debug] [2023-03-29T21:35:55.976Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/chat [none]
+[debug] [2023-03-29T21:35:56.463Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/chat 403
+[debug] [2023-03-29T21:35:56.463Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/chat {"error":{"code":403,"message":"The caller does not have permission","status":"PERMISSION_DENIED"}}
+[debug] [2023-03-29T21:35:56.464Z] HTTP Error: 403, The caller does not have permission
+[debug] [2023-03-29T21:35:56.464Z] Failed to retrieve default database instance: {"name":"FirebaseError","children":[],"exit":2,"message":"Failed to get Firebase project chat. Please make sure the project exists and your account has permission to access it.","original":{"name":"FirebaseError","children":[],"context":{"body":{"error":{"code":403,"message":"The caller does not have permission","status":"PERMISSION_DENIED"}},"response":{"statusCode":403}},"exit":1,"message":"HTTP Error: 403, The caller does not have permission","status":403},"status":500} {"metadata":{"emulator":{"name":"database"},"message":"Failed to retrieve default database instance: {\"name\":\"FirebaseError\",\"children\":[],\"exit\":2,\"message\":\"Failed to get Firebase project chat. Please make sure the project exists and your account has permission to access it.\",\"original\":{\"name\":\"FirebaseError\",\"children\":[],\"context\":{\"body\":{\"error\":{\"code\":403,\"message\":\"The caller does not have permission\",\"status\":\"PERMISSION_DENIED\"}},\"response\":{\"statusCode\":403}},\"exit\":1,\"message\":\"HTTP Error: 403, The caller does not have permission\",\"status\":403},\"status\":500}"}}
+[debug] [2023-03-29T21:35:56.465Z] database rules config:  [{"instance":"chat-default-rtdb","rules":"C:\\Users\\anton\\StudioProjects\\Chat\\database.rules.json"}]
+[debug] [2023-03-29T21:35:56.470Z] Ignoring unsupported arg: projectId {"metadata":{"emulator":{"name":"database"},"message":"Ignoring unsupported arg: projectId"}}
+[debug] [2023-03-29T21:35:56.471Z] Ignoring unsupported arg: auto_download {"metadata":{"emulator":{"name":"database"},"message":"Ignoring unsupported arg: auto_download"}}
+[debug] [2023-03-29T21:35:56.471Z] Ignoring unsupported arg: rules {"metadata":{"emulator":{"name":"database"},"message":"Ignoring unsupported arg: rules"}}
+[debug] [2023-03-29T21:35:56.471Z] Starting Database Emulator with command {"binary":"java","args":["-Duser.language=en","-jar","C:\\Users\\anton\\.cache\\firebase\\emulators\\firebase-database-emulator-v4.11.0.jar","--host","127.0.0.1","--port",9001,"--single_project_mode","Warning"],"optionalArgs":["port","host","functions_emulator_port","functions_emulator_host","single_project_mode"],"joinArgs":false} {"metadata":{"emulator":{"name":"database"},"message":"Starting Database Emulator with command {\"binary\":\"java\",\"args\":[\"-Duser.language=en\",\"-jar\",\"C:\\\\Users\\\\anton\\\\.cache\\\\firebase\\\\emulators\\\\firebase-database-emulator-v4.11.0.jar\",\"--host\",\"127.0.0.1\",\"--port\",9001,\"--single_project_mode\",\"Warning\"],\"optionalArgs\":[\"port\",\"host\",\"functions_emulator_port\",\"functions_emulator_host\",\"single_project_mode\"],\"joinArgs\":false}"}}
+[info] i  database: Database Emulator logging to database-debug.log {"metadata":{"emulator":{"name":"database"},"message":"Database Emulator logging to \u001b[1mdatabase-debug.log\u001b[22m"}}
+[info] i  storage: downloading cloud-storage-rules-runtime-v1.1.3.jar... {"metadata":{"emulator":{"name":"storage"},"message":"downloading cloud-storage-rules-runtime-v1.1.3.jar..."}}
+[debug] [2023-03-29T21:36:10.355Z] >>> [apiv2][query] GET https://storage.googleapis.com/firebase-preview-drop/emulator/cloud-storage-rules-runtime-v1.1.3.jar 
+[debug] [2023-03-29T21:36:10.736Z] <<< [apiv2][status] GET https://storage.googleapis.com/firebase-preview-drop/emulator/cloud-storage-rules-runtime-v1.1.3.jar 200
+[debug] [2023-03-29T21:36:10.736Z] <<< [apiv2][body] GET https://storage.googleapis.com/firebase-preview-drop/emulator/cloud-storage-rules-runtime-v1.1.3.jar [stream]
+[debug] [2023-03-29T21:36:16.086Z] Ignoring unsupported arg: port {"metadata":{"emulator":{"name":"storage"},"message":"Ignoring unsupported arg: port"}}
+[debug] [2023-03-29T21:36:17.670Z] Temp file directory for storage emulator: C:\Users\anton\AppData\Local\Temp/firebase/storage/blobs {"metadata":{"emulator":{"name":"storage"},"message":"Temp file directory for storage emulator: C:\\Users\\anton\\AppData\\Local\\Temp/firebase/storage/blobs"}}
+[info] i  ui: downloading ui-v1.11.4.zip... {"metadata":{"emulator":{"name":"ui"},"message":"downloading ui-v1.11.4.zip..."}}
+[debug] [2023-03-29T21:36:17.690Z] >>> [apiv2][query] GET https://storage.googleapis.com/firebase-preview-drop/emulator/ui-v1.11.4.zip 
+[debug] [2023-03-29T21:36:17.901Z] <<< [apiv2][status] GET https://storage.googleapis.com/firebase-preview-drop/emulator/ui-v1.11.4.zip 200
+[debug] [2023-03-29T21:36:17.901Z] <<< [apiv2][body] GET https://storage.googleapis.com/firebase-preview-drop/emulator/ui-v1.11.4.zip [stream]
+[debug] [2023-03-29T21:36:20.529Z] Ignoring unsupported arg: auto_download {"metadata":{"emulator":{"name":"ui"},"message":"Ignoring unsupported arg: auto_download"}}
+[debug] [2023-03-29T21:36:20.530Z] Ignoring unsupported arg: port {"metadata":{"emulator":{"name":"ui"},"message":"Ignoring unsupported arg: port"}}
+[debug] [2023-03-29T21:36:20.530Z] Starting Emulator UI with command {"binary":"node","args":["C:\\Users\\anton\\.cache\\firebase\\emulators\\ui-v1.11.4\\server\\server.js"],"optionalArgs":[],"joinArgs":false} {"metadata":{"emulator":{"name":"ui"},"message":"Starting Emulator UI with command {\"binary\":\"node\",\"args\":[\"C:\\\\Users\\\\anton\\\\.cache\\\\firebase\\\\emulators\\\\ui-v1.11.4\\\\server\\\\server.js\"],\"optionalArgs\":[],\"joinArgs\":false}"}}
+[info] i  ui: Emulator UI logging to ui-debug.log {"metadata":{"emulator":{"name":"ui"},"message":"Emulator UI logging to \u001b[1mui-debug.log\u001b[22m"}}
+[debug] [2023-03-29T21:36:20.909Z] Web / API server started at 127.0.0.1:4000
+ {"metadata":{"emulator":{"name":"ui"},"message":"Web / API server started at 127.0.0.1:4000\n"}}
+[debug] [2023-03-29T21:36:20.910Z] Web / API server started at ::1:4000
+ {"metadata":{"emulator":{"name":"ui"},"message":"Web / API server started at ::1:4000\n"}}
+[debug] [2023-03-29T21:36:21.053Z] >>> [apiv2][query] PUT http://127.0.0.1:9001/.settings/rules.json ns=chat-default-rtdb
+[debug] [2023-03-29T21:36:21.053Z] >>> [apiv2][body] PUT http://127.0.0.1:9001/.settings/rules.json "{\r\n  \"rules\": {\r\n    \"messages\": {\r\n      \".read\": \"auth.uid != null\",\r\n      \".write\": \"auth.uid != null\"\r\n    }\r\n  }\r\n}\r\n"
+[debug] [2023-03-29T21:36:21.860Z] <<< [apiv2][status] PUT http://127.0.0.1:9001/.settings/rules.json 200
+[debug] [2023-03-29T21:36:21.861Z] <<< [apiv2][body] PUT http://127.0.0.1:9001/.settings/rules.json {"status":"ok"}
+[info] 
+┌─────────────────────────────────────────────────────────────┐
+│ ✔  All emulators ready! It is now safe to connect your app. │
+│ i  View Emulator UI at http://127.0.0.1:4000/               │
+└─────────────────────────────────────────────────────────────┘
+
+┌────────────────┬────────────────┬────────────────────────────────┐
+│ Emulator       │ Host:Port      │ View in Emulator UI            │
+├────────────────┼────────────────┼────────────────────────────────┤
+│ Authentication │ 127.0.0.1:9011 │ http://127.0.0.1:4000/auth     │
+├────────────────┼────────────────┼────────────────────────────────┤
+│ Database       │ 127.0.0.1:9001 │ http://127.0.0.1:4000/database │
+├────────────────┼────────────────┼────────────────────────────────┤
+│ Storage        │ 127.0.0.1:9119 │ http://127.0.0.1:4000/storage  │
+└────────────────┴────────────────┴────────────────────────────────┘
+  Emulator Hub running at 127.0.0.1:4400
+  Other reserved ports: 4500
+
+Issues? Report them at https://github.com/firebase/firebase-tools/issues and attach the *-debug.log files.
+ 

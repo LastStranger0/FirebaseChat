@@ -1,0 +1,22 @@
+{
+  "database": {
+    "rules": "database.rules.json"
+  },
+  "storage": {
+    "rules": "storage.rules"
+  },
+  "emulators": {
+    "auth": {
+      "port": 9011
+    },
+    "database": {
+      "port": 9001
+    },
+    "storage": {
+      "port": 9119
+    },
+    "ui": {
+      "enabled": true
+    }
+  }
+}
